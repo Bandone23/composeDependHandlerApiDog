@@ -1,8 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("dagger.hilt.android.plugin")
     kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -32,6 +32,10 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    hilt {
+        enableAggregatingTask = false
+    }
 }
 
 dependencies {
@@ -39,4 +43,6 @@ dependencies {
     room()
     retrofit()
     hilt()
+
+
 }

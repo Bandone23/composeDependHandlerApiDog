@@ -11,12 +11,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.composemultimodulmvvm.state.DogState
 import com.example.doogs_datasource.data.domain.usecase.*
 import com.example.doogs_datasource.data.remote.model.DogResponse
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.io.IOException
+import javax.inject.Inject
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-class DogsViewModel(
-    private val getRandomDogUseCase: GetRandomDogUseCase = GetRandomDogUseCase(),
+@HiltViewModel
+class DogsViewModel @Inject constructor(
+    private val getRandomDogUseCase: GetRandomDogUseCase
 ) : ViewModel() {
     var dogState by mutableStateOf<DogState>(DogState.Loading)
         private set
